@@ -89,7 +89,7 @@ class ImuDataTable extends React.Component {
             return;
 
         let imuCount = robotData["ROBOT_STATE"]["imu_data"].length;
-        imuCount = 4;
+        //imuCount = 4;
         for (let i = 0; i < imuCount; i++) {
             // TODO : change index with i
             let data = robotData["ROBOT_STATE"]["imu_data"][0];

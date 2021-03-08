@@ -68,8 +68,10 @@ class MyApp extends React.Component {
             this.state.robotData
         );
 
-        if (ret.needSend && ret.cmdString)
+        if (ret.needSend && ret.cmdString){
             this.send(ret.cmdString);
+            message.info("Msg sent:" + ret.cmdString);
+        }
 
         if (ret.info)
             message.info(ret.info);

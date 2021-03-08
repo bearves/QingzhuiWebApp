@@ -23,6 +23,12 @@ class CmdStringBuilder {
         else if (cmdTag === "cq") {
             cmdString = "cq";
         }
+        else if (cmdTag === "start") {
+            cmdString = "start";
+        }
+        else if (cmdTag === "exit") {
+            cmdString = "exit";
+        }
         else if (cmdTag === "en") {
             cmdString = "en";
         }

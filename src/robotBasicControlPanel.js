@@ -142,8 +142,8 @@ class RobotBasicControlPanel extends React.Component {
         return (
             <Space size="small" direction="vertical">
                 <Space size={this.spaceSize}>
-                    <Button className={"basic-cmd-button"} onClick={this.basicGaitActionHandler("en")}>EN</Button>
-                    <Button className={"basic-cmd-button"} onClick={this.basicGaitActionHandler("ds")}>DS</Button>
+                    <Button className={"basic-cmd-button"} onClick={this.basicGaitActionHandler("start")}>START</Button>
+                    <Button className={"basic-cmd-button"} onClick={this.basicGaitActionHandler("exit")}>EXIT</Button>
                     <Button className={"basic-cmd-button"} onClick={this.basicGaitActionHandler("zrt")}>ZRT</Button>
                     <Dropdown overlay={this.hmMenu} className={"basic-cmd-button"}>
                         <Button>HM<DownOutlined />  </Button>
@@ -157,12 +157,18 @@ class RobotBasicControlPanel extends React.Component {
                     </Dropdown>
                 </Space>
                 <Space size={this.spaceSize}>
+                    <Button className={"basic-cmd-button"} onClick={this.basicGaitActionHandler("en")}>EN</Button>
+                    <Button className={"basic-cmd-button"} onClick={this.basicGaitActionHandler("ds")}>DS</Button>
                     <Button className={"basic-cmd-button"} onClick={this.jogActionHandler("jog-f")}>{this.jogButtonText(this.state.groupJogState["f"])} -F</Button>
                     <Button className={"basic-cmd-button"} onClick={this.jogActionHandler("jog-s")}>{this.jogButtonText(this.state.groupJogState["s"])} -S</Button>
                     <Button className={"basic-cmd-button"} onClick={this.jogActionHandler("jog-t")}>{this.jogButtonText(this.state.groupJogState["t"])} -T</Button>
-                    <div className={"basic-cmd-button"} align="center">JOG Speed: </div>
-                    <InputNumber className={"basic-cmd-button"} precision="0" value={this.state.groupJogSpeed} onChange={(value) => this.jogSpeedChanged(value)}/>
-                    <Button className={"basic-cmd-button"} onClick={this.basicGaitActionHandler("cq")}>CQ</Button>
+                    <div className={"basic-cmd-button"} align="center">
+                        Spd:&nbsp;
+                        <InputNumber 
+                            precision="0" 
+                            value={this.state.groupJogSpeed} 
+                            onChange={(value) => this.jogSpeedChanged(value)} />
+                    </div>
                     <Button className={"basic-cmd-button"} onClick={this.basicGaitActionHandler("quit")}>QUIT</Button>
                 </Space>
             </Space>
