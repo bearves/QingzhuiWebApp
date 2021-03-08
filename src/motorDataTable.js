@@ -70,19 +70,19 @@ class MotorDataTable extends React.Component {
                 title: 'TPos',
                 dataIndex: 'tpos',
                 key: 'tpos',
-                width: 120,
+                width: 100,
             },
             {
                 title: 'APos',
                 dataIndex: 'apos',
                 key: 'apos',
-                width: 120,
+                width: 100,
             },
             {
                 title: 'AVel',
                 dataIndex: 'avel',
                 key: 'avel',
-                width: 120,
+                width: 100,
             },
             {
                 title: 'ACur',
