@@ -92,7 +92,7 @@ class ImuDataTable extends React.Component {
         //imuCount = 4;
         for (let i = 0; i < imuCount; i++) {
             // TODO : change index with i
-            let data = robotData["ROBOT_STATE"]["imu_data"][0];
+            let data = robotData["ROBOT_STATE"]["imu_data"][i];
             imuData.gyro.push({
                 key : i, 
                 X   : (data[0]).toFixed(3),

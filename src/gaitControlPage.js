@@ -51,7 +51,7 @@ class GaitControlPanel extends React.Component {
                     <Row className="gait-param-row" key={i}>
                         <Col span={12}>
                             {v}({this.typeName[paramType]}):
-                    </Col>
+                        </Col>
                         <Col span={12}>
                             <InputNumber className={"gait-control-param-input"}
                                 precision={this.typePrecision[paramType]}
@@ -82,7 +82,7 @@ class GaitControlPanel extends React.Component {
                         >
                             Quit
                         </Button> :
-                        <React.Fragment />
+                        <React.Fragment key="1" />
                 ]}
             >
                 {paramDisplay}

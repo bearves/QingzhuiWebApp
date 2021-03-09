@@ -82,7 +82,7 @@ body {
 }
 
 #emergency-stop-button {
-    margin-left: 512px;
+    margin-left: 460px;
 }
 
 #cmd-log-area-div {
@@ -123,9 +123,13 @@ body {
 }
 
 .gait-control-page-header {
-    background-color: #ffffff;
+    background-color: #f0f2f5;
     border-style: solid;
     border-width: 1px;
     border-color: #f0f0f0;
+    height: 40px;
+    padding-top: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
     
 }

@@ -181,7 +181,7 @@ class MotorDataTable extends React.Component {
                 apos  : data[2],
                 avel  : data[3],
                 acur  : data[4],
-                dinpt : data[5],
+                dinpt : (data[5] & (1 << 20)) >> 20,
                 atrq  : data[6].toFixed(3)
             });
         }

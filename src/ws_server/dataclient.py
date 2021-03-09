@@ -94,6 +94,9 @@ class RobotStateData(object):
             'gait_id' : [],
             'gait_name' : []
         }
+        self.motion_num = 18
+        self.trqsensor_board_num = 3
+        self.imu_num = 4
     
     def unpack(self, raw_data):
         self.unpack_time(raw_data)
@@ -109,9 +112,8 @@ class RobotStateData(object):
 
     def unpack_motion(self, raw_data):
         start_offset = 16
-        motion_num = 18
         self.data_dict['motion_data'] = []
-        for i in range(motion_num):
+        for i in range(self.motion_num):
             # mot_data defined as (sw, tpos, apos, avel, acur, diput, trq) 
             mot_data = list(struct.unpack_from('@iiiiiif', \
                                                raw_data, start_offset+i*7*4))
@@ -120,27 +122,25 @@ class RobotStateData(object):
             self.data_dict['motion_data'].append(mot_data)
     
     def unpack_trqsensor(self, raw_data):
-        start_offset = 16 + 18*7*4
-        trqsensor_board_num = 3
+        start_offset = 16 + self.motion_num*7*4
         self.data_dict['trqsensor_data'] = []
-        for i in range(trqsensor_board_num):
+        for i in range(self.trqsensor_board_num):
             # trqsr_data defined as readings[6]
             trqsr_data = struct.unpack_from('@ffffff', raw_data, start_offset+i*6*4)
             round_trq_data = [round(x, 4) for x in trqsr_data]
             self.data_dict['trqsensor_data'].append(round_trq_data)
 
     def unpack_imu(self, raw_data):
-        start_offset = 16 + 18*7*4 + 3*6*4
-        imu_num = 1
+        start_offset = 16 + self.motion_num*7*4 + self.trqsensor_board_num*6*4
         self.data_dict['imu_data'] = []
-        for i in range(imu_num):
+        for i in range(self.imu_num):
             # imu_data defined as gyro[3], acc[3], euler[3]
             imu_data = struct.unpack_from('@fffffffff', raw_data, start_offset+i*9*4)
             round_imu_data = [round(x, 4) for x in imu_data]
             self.data_dict['imu_data'].append(round_imu_data)
 
     def unpack_gaitinfo(self, raw_data):
-        start_offset = 16 + 18*7*4 + 3*6*4 + 1*9*4
+        start_offset = 16 + self.motion_num*7*4 + self.trqsensor_board_num*6*4 + self.imu_num*9*4
         # gait info defined as (gait_id, gait_name[8])
         (gid, gname) = struct.unpack_from('@i8s', raw_data, start_offset)
         self.data_dict['gait_id'] = gid
