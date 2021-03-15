@@ -9,10 +9,10 @@ class CmdStringBuilder {
         let cmdString = "";
 
         if (cmdTag === "jogm") {
-            cmdString = "jog -m=" + param.id + " -v=" + param.vel + " --quit=" + (param.start?0:1);
+            cmdString = "jog -m=" + param.id + " -v=" + param.vel + " -q=" + (param.start?0:1);
         }
         else if (cmdTag === "jogG") {
-            cmdString = "jog -" + param.group.toUpperCase() + " -v=" + param.vel + " --quit=" + (param.start?0:1);
+            cmdString = "jog -" + param.group.toUpperCase() + " -v=" + param.vel + " -q=" + (param.start?0:1);
         }
         else if (cmdTag === "hm") {
             cmdString = ("hm -" + param.group.toUpperCase());
