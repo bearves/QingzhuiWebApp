@@ -15,7 +15,12 @@ class CmdStringBuilder {
             cmdString = "jog -" + param.group.toUpperCase() + " -v=" + param.vel + " -q=" + (param.start?0:1);
         }
         else if (cmdTag === "hm") {
-            cmdString = ("hm -" + param.group.toUpperCase());
+            if (param.group === "k"){
+                cmdString = "fake_home";
+            }
+            else {
+                cmdString = ("hm -" + param.group.toUpperCase());
+            }
         }
         else if (cmdTag === "hmsw") {
             cmdString = ("hmsw -" + param.group.toUpperCase());
@@ -114,7 +119,7 @@ class CmdStringBuilder {
                                 value = paramValues[k].toFixed(3);
                                 break;
                         }
-                        return `${prefix}=${value}`;
+                        return `--${prefix}=${value}`;
                     }
                 );
                 cmdString = gaitName + " --online " + (cmdParamList.join(" "));

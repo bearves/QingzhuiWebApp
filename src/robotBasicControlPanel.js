@@ -58,6 +58,9 @@ class RobotBasicControlPanel extends React.Component {
                 <Menu.Item key="hm-t">
                     HM -T
                 </Menu.Item>
+                <Menu.Item key="hm-k">
+                    Fake home
+                </Menu.Item>
           </Menu>
         );
     }
