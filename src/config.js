@@ -15,10 +15,11 @@ const gaitParamSettings = {
         start: {default: 0, clear: 0, prefix: "start", type: "b"},
         stop:  {default: 0, clear: 0, prefix: "stop",  type: "b"},
         stepHeight: { default: 0.12, max: 0.25, min: 0.00, clear: 0.12, delta: 0.015, prefix: "step_height", type: "f"},
-        trotVelocity: { default: 0.00, max: 1.00, min: -1.00, clear: 0.00, delta: 0.20, prefix: "trot_vel", type: "f"},
+        trotVelocity: { default: 0.00, max: 1.20, min: -1.20, clear: 0.00, delta: 0.20, prefix: "trot_vel", type: "f"},
         sideVelocity: { default: 0.00, max: 0.30, min: -0.30, clear: 0.00, delta: 0.15, prefix: "side_vel", type: "f"},
         turnRate: { default: 0.00, max: 0.50, min: -0.50, clear: 0.00, delta: 0.05, prefix: "turn_rate", type: "f"},
-        load : {default: 9, max: 30, min: 0, clear: 0, delta: 2, prefix: "load", type: "i"}
+        load : {default: 9, max: 30, min: 0, clear: 0, delta: 2, prefix: "load", type: "i"},
+        period : {default: 0.7, max: 1.5, min: 0.3, clear: 0.7, delta: 0.1, prefix: "period", type: "f"}
     }
 
 };
@@ -42,8 +43,8 @@ const gaitParamModifyRule = {
                         {action: "setBool", param: "stop"}]
         },
         axisMap: {
-            "LH": { action: "setAxis", param: "trotVelocity", valueMap: (x) => (2.0 * x) },
-            "LV": { action: "setAxis", param: "sideVelocity", valueMap: (x) => (-2.0 * x) },
+            "LV": { action: "setAxis", param: "trotVelocity", valueMap: (x) => (-2.0 * x) },
+            "LH": { action: "setAxis", param: "sideVelocity", valueMap: (x) => (-2.0 * x) },
         }
     },
     tt: {
@@ -51,6 +52,10 @@ const gaitParamModifyRule = {
         keyMap: {
             "X": { action: "dec", param: "stepHeight" },
             "Y": { action: "inc", param: "stepHeight" },
+            "A": { action: "dec", param: "load" },
+            "B": { action: "inc", param: "load" },
+            "LSP": { action: "dec", param: "period" },
+            "RSP": { action: "inc", param: "period" },
             "BLS" : { action: "dec", param: "sideVelocity"},
             "BRS" : { action: "inc", param: "sideVelocity"},
 
@@ -61,8 +66,8 @@ const gaitParamModifyRule = {
                         {action: "setBool", param: "stop"}]
         },
         axisMap: {
-            "LV": { action: "setAxis", param: "trotVelocity", valueMap: (x) => (-1.0 * x) },
-            "RH": { action: "setAxis", param: "turnRate", valueMap: (x) => (0.5 * x) },
+            "LV": { action: "setAxis", param: "trotVelocity", valueMap: (x) => (0.4*Math.round((-1.2 * x)/0.4)) },
+            "RH": { action: "setAxis", param: "turnRate", valueMap: (x) => (0.1*Math.round((-0.5 * x)/0.1)) },
         }
     },
 };
