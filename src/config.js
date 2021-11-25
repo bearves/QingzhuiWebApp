@@ -67,7 +67,7 @@ const gaitParamModifyRule = {
         },
         axisMap: {
             "LV": { action: "setAxis", param: "trotVelocity", valueMap: (x) => (0.4*Math.round((-1.2 * x)/0.4)) },
-            "RH": { action: "setAxis", param: "turnRate", valueMap: (x) => (0.1*Math.round((-0.5 * x)/0.1)) },
+            "RH": { action: "setAxis", param: "turnRate", valueMap: (x) => (0.11*Math.round((-0.5 * x)/0.1)) },
         }
     },
 };
